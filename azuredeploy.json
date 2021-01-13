@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "WebApp_name": {
+            "type": "string"
+        },
+        "WebAppService_Name": {
+            "type": "string"
+        },
+        "Postgres_Server_Name": {
+            "type": "string"
+        },
+        "DB_User_Name": {
+            "type": "string"
+        },
+        "DB_User_Password": {
+            "type": "securestring"
+        }
+    },
+    "functions": [],
+    "variables": {
+        "VN_Name": "virtualNetwork1"
+    },
+    "resources": [
+        {
+            "name": "[variables('VN_Name')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2018-08-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "virtualNetwork1"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "Subnet-1",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24"
+                        }
+                    },
+                    {
+                        "name": "Subnet-2",
+                        "properties": {
+                            "addressPrefix": "10.0.1.0/24"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}
