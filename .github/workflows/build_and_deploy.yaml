@@ -9,7 +9,7 @@ on:
       - master
 
 env:
-  WEBAPP_NAME: ${{ secrets.WebApp_Name}}  # Replace with the name of your Azure web app
+  WEBAPP_NAME: ${{ secrets.WebApp_Name}}  # Set the WebApp name from GITHUB secrets
 
 jobs:
   build-and-test:
@@ -19,8 +19,8 @@ jobs:
     - uses: actions/checkout@v2
     - uses: Azure/get-keyvault-secret@v1
       with:
-        keyvault: "KEY_VAULT_NAME" # name of the key vault in Azure portal
-        secrets: 'KEY_VAULT_SECRET' # comma separated list of secret keys to fetch from key vault
+        keyvault: ${{ secrets.KEY_VAULT_NAME }} # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
+        secrets: ${{ secrets.KEY_VAULT_SECRET }} # comma separated list of secret keys to fetch from key vault
       id: myGetSecretAction # ID for secrets that you will reference
 
     - name: Setup Python version
