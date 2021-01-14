@@ -9,7 +9,7 @@ on:
       - master
 
 env:
-  WEBAPP_NAME: ${{ secrets.WebApp_Name}}  # Set the WebApp name from GITHUB secrets
+  WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
 
 jobs:
   build-and-test:
@@ -17,6 +17,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+
+    - name: echo variables
+      run: echo ${{ env.WEBAPP_NAME }} & ${{ env.KEY_VAULT_NAME }} & ${{ env.KEY_VAULT_SECRET }}
+
+    - name: Log in to Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
+    
     - uses: Azure/get-keyvault-secret@v1
       with:
         keyvault: ${{ secrets.KEY_VAULT_NAME }} # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
