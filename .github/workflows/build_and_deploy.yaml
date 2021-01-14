@@ -23,6 +23,9 @@ jobs:
         secrets: ${{ secrets.KEY_VAULT_SECRET }} # comma separated list of secret keys to fetch from key vault
       id: myGetSecretAction # ID for secrets that you will reference
 
+    - name: print Key Vault name
+      run: echo ${{ secrets.KEY_VAULT_NAME }}
+
     - name: Setup Python version
       uses: actions/setup-python@v2
       with:
