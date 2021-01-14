@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: echo variables
-      run: echo ${{ env.WEBAPP_NAME }} & ${{ env.KEY_VAULT_NAME }} & ${{ env.KEY_VAULT_SECRET }}
+      run: echo ${{ env.WEBAPP_NAME }} + ${{ env.KEY_VAULT_NAME }} + ${{ env.KEY_VAULT_SECRET }}
 
     - name: Log in to Azure CLI
       uses: azure/login@v1
