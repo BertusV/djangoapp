@@ -49,9 +49,9 @@ jobs:
 
     - name: set environment values
       run: |
-        envkey_KEY_VAULT_NAME: ${{ secrets.KEY_VAULT_NAME }}
+        set KEY_VAULT_NAME= ${{ secrets.KEY_VAULT_NAME }}
         export KEY_VAULT_SECRET= ${{ secrets.KEY_VAULT_SECRET_NAME }}
-        envkey_DBHOST: ${{ secrets.DB_SERVER }}
+        set DBHOST= ${{ secrets.DB_SERVER }}
         export DBUSER= ${{ secrets.DB_ADMINUSER }}
         export DBNAME="pollsdb"
         export DBPASS= ${{ secrets.DB_ADMINPASSWORD }}
