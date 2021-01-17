@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+print(os.environ['DBNAME'])
 print(os.environ['KEY_VAULT_NAME'])
 keyVaultName = os.environ['KEY_VAULT_NAME']
 KVUri = f"https://{keyVaultName}.vault.azure.net"
