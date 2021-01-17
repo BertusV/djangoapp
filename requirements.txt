@@ -1,3 +1,5 @@
-Django>=3.0,<=3.1
+Django>=3.0,<=3.2
 whitenoise
 psycopg2-binary
+azure-identity
+azure-keyvault-secrets
