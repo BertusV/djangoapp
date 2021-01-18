@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 print(os.environ.get('DBNAME'))
-print(os.environ.get('KEY_VAULT_NAME'))
 keyVaultName = os.environ.get('KEY_VAULT_NAME')
+print(keyVaultName)
 KVUri = f"https://{keyVaultName}.vault.azure.net"
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
