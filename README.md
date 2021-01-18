@@ -4,6 +4,8 @@ platforms: python
 author: cephalin
 ---
 
+![Build and deploy Django app to Azure App Service](https://github.com/BertusV/djangoapp/workflows/Build%20and%20deploy%20Django%20app%20to%20Azure%20App%20Service/badge.svg)
+
 # Django and PostgreSQL sample for Azure App Service
 
 This samples is a simple Django app that connects to a PostgreSQL database. The sample is used with the following tutorials:
