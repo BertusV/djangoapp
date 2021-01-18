@@ -49,12 +49,12 @@ jobs:
 
     - name: set environment values
       run: |
-        Python os.environ["KEY_VAULT_NAME"]= ${{ secrets.KEY_VAULT_NAME }}
-        export KEY_VAULT_SECRET= ${{ secrets.KEY_VAULT_SECRET_NAME }}
-        set DBHOST= ${{ secrets.DB_SERVER }}
-        export DBUSER= ${{ secrets.DB_ADMINUSER }}
+        export KEY_VAULT_NAME=${{ secrets.KEY_VAULT_NAME }}
+        export KEY_VAULT_SECRET=${{ secrets.KEY_VAULT_SECRET_NAME }}
+        export DBHOST=${{ secrets.DB_SERVER }}
+        export DBUSER=${{ secrets.DB_ADMINUSER }}
         export DBNAME="pollsdb"
-        export DBPASS= ${{ secrets.DB_ADMINPASSWORD }}
+        export DBPASS=${{ secrets.DB_ADMINPASSWORD }}
 
     - name: Collect static
       run: python manage.py collectstatic
