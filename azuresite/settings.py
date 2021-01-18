@@ -30,7 +30,7 @@ KVUri = f"https://{keyVaultName}.vault.azure.net"
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
 
-SECRET_KEY = client.get_secret(os.environ.get('KEY_VAULT_SECRET_NAME'))
+SECRET_KEY = client.get_secret(os.environ.get('KEY_VAULT_SECRET'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
