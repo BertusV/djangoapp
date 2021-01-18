@@ -49,7 +49,7 @@ jobs:
 
     - name: set environment values
       run: |
-        set KEY_VAULT_NAME= ${{ secrets.KEY_VAULT_NAME }}
+        Python os.environ["KEY_VAULT_NAME"]= ${{ secrets.KEY_VAULT_NAME }}
         export KEY_VAULT_SECRET= ${{ secrets.KEY_VAULT_SECRET_NAME }}
         set DBHOST= ${{ secrets.DB_SERVER }}
         export DBUSER= ${{ secrets.DB_ADMINUSER }}
