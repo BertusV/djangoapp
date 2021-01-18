@@ -27,6 +27,7 @@ print(os.environ.get('DBNAME'))
 keyVaultName = os.environ.get('KEY_VAULT_NAME')
 print(keyVaultName)
 KVUri = f"https://{keyVaultName}.vault.azure.net"
+print(KVUri)
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
 
