@@ -16,8 +16,7 @@ env:
   DB_USER: ${{ secrets.DB_ADMINUSER }}
   DB_NAME: "pollsdb"
   DB_PASS: ${{ secrets.DB_ADMINPASSWORD }}
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-
+  
 jobs:
   build-and-test:
     environment: Production
