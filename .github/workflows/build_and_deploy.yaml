@@ -8,15 +8,6 @@ on:
     branches: 
       - master
 
-env:
-  WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
-  KV_NAME: ${{ secrets.KEY_VAULT_NAME }}
-  KV_SECRET: ${{ secrets.KEY_VAULT_SECRET_NAME }}
-  DB_HOST: ${{ secrets.DB_SERVER }}
-  DB_USER: ${{ secrets.DB_ADMINUSER }}
-  DB_NAME: "pollsdb"
-  DB_PASS: ${{ secrets.DB_ADMINPASSWORD }}
-
 jobs:
   build-and-test:
     environment: Production
@@ -25,20 +16,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    
 #    - name: echo variables
 #      run: echo ${{ env.WEBAPP_NAME }} , ${{ secrets.KEY_VAULT_NAME }} , ${{ secrets.KEY_VAULT_SECRET }}
-
 
     - name: Log in to Azure CLI
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
     
-#    - uses: Azure/get-keyvault-secrets@v1.0
-#      with:
-#        keyvault: ${{ secrets.KEY_VAULT_NAME }} # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
-#        secrets: ${{ secrets.KEY_VAULT_SECRET }} # comma separated list of secret keys to fetch from key vault
-#      id: myGetSecretAction # ID for secrets that you will reference
+    - uses: Azure/get-keyvault-secrets@v1.0
+      with:
+        keyvault: ${{ secrets.KEY_VAULT_NAME }} # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
+        secrets: ${{ secrets.KEY_VAULT_SECRET }} # comma separated list of secret keys to fetch from key vault
+      id: myGetSecretAction # ID for secrets that you will reference
 
     - name: Setup Python version
       uses: actions/setup-python@v2
@@ -69,12 +60,25 @@ jobs:
         export DBUSER=DB_USER
         export DBNAME="pollsdb"
         export DBPASS=DB_PASS
+      with:
+        WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
+        KV_NAME: ${{ secrets.KEY_VAULT_NAME }}
+        KV_SECRET: ${{ secrets.KEY_VAULT_SECRET_NAME }}
+        DB_HOST: ${{ secrets.DB_SERVER }}
+        DB_USER: ${{ secrets.DB_ADMINUSER }}
+        DB_NAME: "pollsdb"
+        DB_PASS: ${{ secrets.DB_ADMINPASSWORD }}
+
 
     - name: Collect static
       run: python manage.py collectstatic
+      with:
+        WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
 
     - name: Run tests
       run: python manage.py test
+      with:
+        WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
     
     - name: Upload artifact for deployment jobs
       uses: actions/upload-artifact@v2
