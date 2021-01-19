@@ -7,14 +7,14 @@ on:
   push:
     branches: 
       - master
-  env:
-    WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
-    KV_NAME: ${{ secrets.KEY_VAULT_NAME }}
-    KV_SECRET: ${{ secrets.KEY_VAULT_SECRET_NAME }}
-    DB_HOST: ${{ secrets.DB_SERVER }}
-    DB_USER: ${{ secrets.DB_ADMINUSER }}
-    DB_NAME: "pollsdb"
-    DB_PASS: ${{ secrets.DB_ADMINPASSWORD }}
+env:
+  WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
+  KV_NAME: ${{ secrets.KEY_VAULT_NAME }}
+  KV_SECRET: ${{ secrets.KEY_VAULT_SECRET_NAME }}
+  DB_HOST: ${{ secrets.DB_SERVER }}
+  DB_USER: ${{ secrets.DB_ADMINUSER }}
+  DB_NAME: "pollsdb"
+  DB_PASS: ${{ secrets.DB_ADMINPASSWORD }}
 
 jobs:
   build-and-test:
