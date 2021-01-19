@@ -72,13 +72,9 @@ jobs:
 
     - name: Collect static
       run: python manage.py collectstatic
-      with:
-        WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
 
     - name: Run tests
       run: python manage.py test
-      with:
-        WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
     
     - name: Upload artifact for deployment jobs
       uses: actions/upload-artifact@v2
