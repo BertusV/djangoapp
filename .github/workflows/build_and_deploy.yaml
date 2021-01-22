@@ -28,7 +28,7 @@ jobs:
     - name: Set Actions Allow Unsecure Commands
       run: echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" >> $GITHUB_ENV    
 
-        #    - name: echo variables
+#    - name: echo variables
 #      run: echo ${{ env.WEBAPP_NAME }} , ${{ secrets.KEY_VAULT_NAME }} , ${{ secrets.KEY_VAULT_SECRET }}
 
     - name: Log in to Azure CLI
