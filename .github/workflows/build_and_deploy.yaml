@@ -51,8 +51,10 @@ jobs:
         path: 'config.json'
     # can be an object
         data: 
-          foo: 'bar'
-          hello: 'world'
+          ${{ env.KV_NAME }}
+          ${{ env.KV_SECRET }}
+          
+      run: cat config.json    
         
     - name: Setup Python version
       uses: actions/setup-python@v2
