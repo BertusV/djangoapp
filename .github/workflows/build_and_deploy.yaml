@@ -53,7 +53,8 @@ jobs:
         data: 
           ${{ env.KV_NAME }}
           ${{ env.KV_SECRET }}
-          
+      
+    - name: type file out      
       run: cat config.json    
         
     - name: Setup Python version
