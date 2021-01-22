@@ -37,13 +37,23 @@ jobs:
       with:
         creds: ${{ env.SERVICE_PRINCIPAL }}
     
-    - uses: Azure/get-keyvault-secrets@v1.0
+    - name: Get Key Vault values
+      uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "#${{ env.KV_NAME }}" # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
-        secrets: '#${{ env.KV_SECRET }}' # comma separated list of secret keys to fetch from key vault
+        keyvault: ${{ env.KV_NAME }} # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
+        secrets: ${{ env.KV_SECRET }} # comma separated list of secret keys to fetch from key vault
       id: myGetSecretAction # ID for secrets that you will reference
     
-
+    - name: write values to file
+      uses: antfu/action-write-config
+      with:
+    # the file path to be saved, yaml is also supported
+        path: 'config.json'
+    # can be an object
+        data: 
+          foo: 'bar'
+          hello: 'world'
+        
     - name: Setup Python version
       uses: actions/setup-python@v2
       with:
@@ -67,12 +77,12 @@ jobs:
 #        DBPASS: ${{ secrets.DB_ADMINPASSWORD }}
 
       run: |
-        export KEY_VAULT_NAME=KV_NAME
-        export KEY_VAULT_SECRET=KV_SECRET
-        export DBHOST=DB_HOST
-        export DBUSER=DB_USER
+        export KEY_VAULT_NAME=env.KV_NAME
+        export KEY_VAULT_SECRET=env.KV_SECRET
+        export DBHOST=env.DB_HOST
+        export DBUSER=env.DB_USER
         export DBNAME="pollsdb"
-        export DBPASS=DB_PASS
+        export DBPASS=env.DB_PASS
 
     - name: Collect static
       run: python manage.py collectstatic
