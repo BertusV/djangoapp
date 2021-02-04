@@ -87,7 +87,7 @@ jobs:
 #        Export DBNAME="pollsdb"
 #        Export DBPASS="${{ env.DB_PASS }}"
 
-    - name: Collect static
+#    - name: Collect static
       run: python manage.py collectstatic
 
     - name: Run tests
