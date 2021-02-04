@@ -10,8 +10,8 @@ on:
 env:
   WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
   SERVICE_PRINCIPAL: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
-  KV_NAME: "BVdjangoDemo-KV" #${{ secrets.KEY_VAULT_NAME }}
-  KV_SECRET: 'SECRET-KEY' #${{ secrets.KEY_VAULT_SECRET_NAME }}
+  KV_NAME:  ${{ secrets.KEY_VAULT_NAME }} #"BVdjangoDemo-KV"
+  KV_SECRET: ${{ secrets.KEY_VAULT_SECRET_NAME }}  #'SECRET-KEY'
   DB_HOST: ${{ secrets.DB_SERVER }}
   DB_USER: ${{ secrets.DB_ADMINUSER }}
   DB_NAME: "pollsdb"
