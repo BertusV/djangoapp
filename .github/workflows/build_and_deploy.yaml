@@ -91,6 +91,13 @@ jobs:
       run: python manage.py collectstatic
 
     - name: Run tests
+      env:
+        KEY_VAULT_NAME: ${{ env.KV_NAME }}
+        KEY_VAULT_SECRET: ${{ env.KV_SECRET }}
+        DBHOST: ${{ env.DB_HOST }}
+        DBUSER: ${{ env.DB_USER }}
+        DBNAME: "pollsdb"
+        DBPASS: ${{ env.DB_PASS }}
       run: python manage.py test
     
     - name: Upload artifact for deployment jobs
