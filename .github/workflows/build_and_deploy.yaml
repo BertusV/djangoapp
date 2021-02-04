@@ -80,12 +80,12 @@ jobs:
 #        DBPASS: ${{ secrets.DB_ADMINPASSWORD }}
 
       run: |
-        $Env:KEY_VAULT_NAME="${{ env.KV_NAME }}"
-        $Env:KEY_VAULT_SECRET="${{ env.KV_SECRET }}"
-        $Env:DBHOST="${{ env.DB_HOST }}"
-        $Env:DBUSER="${{ env.DB_USER }}"
-        $Env:DBNAME="pollsdb"
-        $Env:DBPASS="${{ env.DB_PASS }}"
+        Export KEY_VAULT_NAME="${{ env.KV_NAME }}"
+        Export KEY_VAULT_SECRET="${{ env.KV_SECRET }}"
+        Export DBHOST="${{ env.DB_HOST }}"
+        Export DBUSER="${{ env.DB_USER }}"
+        Export DBNAME="pollsdb"
+        Export DBPASS="${{ env.DB_PASS }}"
 
     - name: Collect static
       run: python manage.py collectstatic
