@@ -44,18 +44,18 @@ jobs:
         secrets: ${{ env.KV_SECRET }} # comma separated list of secret keys to fetch from key vault
       id: myGetSecretAction # ID for secrets that you will reference
     
-    - name: write values to file
-      uses: antfu/action-write-config
-      with:
+#    - name: write values to file
+#      uses: antfu/action-write-config
+#      with:
     # the file path to be saved, yaml is also supported
-        path: 'config.json'
+#        path: 'config.json'
     # can be an object
-        data: 
-          KV_Name: ${{ env.KV_NAME }}
-          KV_Secret: ${{ env.KV_SECRET }}
+#        data: 
+#          KV_Name: ${{ env.KV_NAME }}
+#          KV_Secret: ${{ env.KV_SECRET }}
       
-    - name: type file out      
-      run: cat config.json    
+#    - name: type file out      
+#      run: cat config.json    
         
     - name: Setup Python version
       uses: actions/setup-python@v2
