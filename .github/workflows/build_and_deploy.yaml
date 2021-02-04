@@ -10,8 +10,8 @@ on:
 env:
   WEBAPP_NAME: ${{ secrets.WebApp_Name }}  # Set the WebApp name from GITHUB secrets
   SERVICE_PRINCIPAL: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
-  KV_NAME: ${{ secrets.KEY_VAULT_NAME }}
-  KV_SECRET: ${{ secrets.KEY_VAULT_SECRET_NAME }}
+  KV_NAME: "BVdjangoDemo-KV" #${{ secrets.KEY_VAULT_NAME }}
+  KV_SECRET: 'SECRET-KEY' #${{ secrets.KEY_VAULT_SECRET_NAME }}
   DB_HOST: ${{ secrets.DB_SERVER }}
   DB_USER: ${{ secrets.DB_ADMINUSER }}
   DB_NAME: "pollsdb"
@@ -40,8 +40,8 @@ jobs:
     - name: Get Key Vault values
       uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "BVdjangoDemo-KV"#${{ secrets.KEY_VAULT_NAME }}" #${{ env.KV_NAME }} # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
-        secrets: 'SECRET-KEY' #'${{ secrets.KEY_VAULT_SECRET_NAME }}' #${{ env.KV_SECRET }} # comma separated list of secret keys to fetch from key vault
+        keyvault: ${{ env.KV_NAME }} #"BVdjangoDemo-KV" #${{ secrets.KEY_VAULT_NAME }}"  # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
+        secrets: ${{ env.KV_SECRET }} #'${{ secrets.KEY_VAULT_SECRET_NAME }}'  # comma separated list of secret keys to fetch from key vault
       id: myGetSecretAction # ID for secrets that you will reference
     
 #    - name: write values to file
