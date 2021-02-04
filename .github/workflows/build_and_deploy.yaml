@@ -51,8 +51,8 @@ jobs:
         path: 'config.json'
     # can be an object
         data: 
-          ${{ env.KV_NAME }}
-          ${{ env.KV_SECRET }}
+          KV_Name: ${{ env.KV_NAME }}
+          KV_Secret: ${{ env.KV_SECRET }}
       
     - name: type file out      
       run: cat config.json    
@@ -80,12 +80,12 @@ jobs:
 #        DBPASS: ${{ secrets.DB_ADMINPASSWORD }}
 
       run: |
-        export KEY_VAULT_NAME=env.KV_NAME
-        export KEY_VAULT_SECRET=env.KV_SECRET
-        export DBHOST=env.DB_HOST
-        export DBUSER=env.DB_USER
-        export DBNAME="pollsdb"
-        export DBPASS=env.DB_PASS
+        $Env:KEY_VAULT_NAME="${{ env.KV_NAME }}"
+        $Env:KEY_VAULT_SECRET="${{ env.KV_SECRET }}"
+        $Env:DBHOST="${{ env.DB_HOST }}"
+        $Env:DBUSER="${{ env.DB_USER }}"
+        $Env:DBNAME="pollsdb"
+        $Env:DBPASS="${{ env.DB_PASS }}"
 
     - name: Collect static
       run: python manage.py collectstatic
