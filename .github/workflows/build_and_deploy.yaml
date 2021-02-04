@@ -71,21 +71,21 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: set environment values
-#      env:
-#        KEY_VAULT_NAME: ${{ secrets.KEY_VAULT_NAME }}
-#        KEY_VAULT_SECRET: ${{ secrets.KEY_VAULT_SECRET_NAME }}
-#        DBHOST: ${{ secrets.DB_SERVER }}
-#        DBUSER: ${{ secrets.DB_ADMINUSER }}
-#        DBNAME: "pollsdb"
-#        DBPASS: ${{ secrets.DB_ADMINPASSWORD }}
+      env:
+        KEY_VAULT_NAME: ${{ env.KV_NAME }}
+        KEY_VAULT_SECRET: ${{ env.KV_SECRET }}
+        DBHOST: ${{ env.DB_HOST }}
+        DBUSER: ${{ env.DB_USER }}
+        DBNAME: "pollsdb"
+        DBPASS: ${{ env.DB_PASS }}
 
-      run: |
-        Export KEY_VAULT_NAME="${{ env.KV_NAME }}"
-        Export KEY_VAULT_SECRET="${{ env.KV_SECRET }}"
-        Export DBHOST="${{ env.DB_HOST }}"
-        Export DBUSER="${{ env.DB_USER }}"
-        Export DBNAME="pollsdb"
-        Export DBPASS="${{ env.DB_PASS }}"
+#      run: |
+#        Export KEY_VAULT_NAME="${{ env.KV_NAME }}"
+#        Export KEY_VAULT_SECRET="${{ env.KV_SECRET }}"
+#        Export DBHOST="${{ env.DB_HOST }}"
+#        Export DBUSER="${{ env.DB_USER }}"
+#        Export DBNAME="pollsdb"
+#        Export DBPASS="${{ env.DB_PASS }}"
 
     - name: Collect static
       run: python manage.py collectstatic
