@@ -40,8 +40,8 @@ jobs:
     - name: Get Key Vault values
       uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: ${{ env.KV_NAME }} #"BVdjangoDemo-KV" #${{ secrets.KEY_VAULT_NAME }}"  # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
-        secrets: ${{ env.KV_SECRET }} #'${{ secrets.KEY_VAULT_SECRET_NAME }}'  # comma separated list of secret keys to fetch from key vault
+        keyvault: "${{ env.KV_NAME }}" #"BVdjangoDemo-KV" #${{ secrets.KEY_VAULT_NAME }}"  # Set the name of the KEY VAULT in Azure portal from GITHUB secrets
+        secrets: '${{ env.KV_SECRET }}' #'${{ secrets.KEY_VAULT_SECRET_NAME }}'  # comma separated list of secret keys to fetch from key vault
       id: myGetSecretAction # ID for secrets that you will reference
     
 #    - name: write values to file
